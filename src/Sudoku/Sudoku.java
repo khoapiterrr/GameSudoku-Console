@@ -127,6 +127,16 @@ public class Sudoku {
 		}
 		return false;
 	}
+	static boolean PlayGame(int grid[][]) {
+	    for (int i = 0; i < dim; i++) {
+	    	for (int j = 0; j < dim; j++) {
+	    		if(grid[i][j] == Blank) {
+	    			return true;
+	    		}
+	    	}	  
+	    }
+	    return false;
+	}
 	
 	//Kiem tra nguoi choi chon dap an dung chua?
 	static boolean isValid(int row, int col, int value) {
@@ -137,6 +147,7 @@ public class Sudoku {
 		return ( row < 10 && col < 10 && row >= 0 && col >= 0);
 		
 	}
+	
 	
 	public static void main(String[] args) {
 
@@ -151,7 +162,7 @@ public class Sudoku {
 		
 		Scanner sc = new Scanner(System.in);
 		ResultGame(grid);
-		while(CheckWinGame == getBankLocation(matrix)) {
+		while(PlayGame(matrix)) {
 			int i, j, value;
 			do {
 				System.out.print("Row:");
@@ -163,20 +174,17 @@ public class Sudoku {
 			}while(ValidLocation(i, j) == false);
 			
 			if(matrix[i][j] != 0) {
-				break;
+				System.out.println("Vi tri da ton tai gia tri dung roi :( ");
 			}
 			
 			if (isValid(i, j, value)) {
-				System.out.println("Gioi lam!! Choi tiep de ban :000");
+				System.out.println("Gioi lam!! Choi tiep de ban (°.°) ");
 				matrix[i][j] = value;
 				print_game(matrix);
 			}
 			else {
 				System.out.println("Sai cmnr -.- Ban choi ngu vchg");
 			}
-			
-			
-			
 		}
 		
 		
